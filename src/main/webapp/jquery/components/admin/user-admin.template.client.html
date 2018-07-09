@@ -8,6 +8,7 @@
 <link rel="stylesheet" href=
   "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <link href="user-admin.style.client.css" rel="stylesheet" />
+<link href="user-admin.style.client.css" rel="stylesheet" />
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="admin-user.service.client.js"></script>
@@ -16,7 +17,7 @@
 
 <body>
 
-<table class="table">
+<table id="admin_table" class="table">
   <thead>
     <tr>
       <th>Username</th>
@@ -50,12 +51,12 @@
 	      <td class="wbdv-role">FACULTY</td>
 	      <td class="wbdv-actions">
 	        <span class="float-right">
-	          <i id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i>
-	          <i id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i>
+	          <i id="wbdv-remove" class="fa-2x fa fa-trash-o wbdv-remove"></i>
+	          <i id="wbdv-edit" class="fa-2x fa fa-edit wbdv-edit"></i>
 	        </span>
 	      </td>
 	   </tr>
 	 </tbody>
-	</table>
+</table>
 
 </body>

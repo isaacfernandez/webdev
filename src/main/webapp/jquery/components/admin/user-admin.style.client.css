@@ -1,0 +1,7 @@
+/*
+   Mostly here for the assignment, I don't think the table currently needs custom CSS beyond BootStrap / FA
+ */
+
+table {
+    border-style: outset;
+}
