@@ -12,8 +12,9 @@
         var pass = $("#passwordFld").val();
         if ( username.length > 0) {
             console.log("accessing as " + username + ":" + pass);
-            status = userService.login(username, pass);
-            console.log(status)
+            status = userService.logon(username, pass);
+            console.log(status);
+            //if success window.location.href = profile
         } else {
             console.log("Error, something missing");
         }
