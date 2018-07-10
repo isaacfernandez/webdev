@@ -8,18 +8,18 @@ function UserService() {
 
     self = this;
 
-    function register(username, password) {
-        var user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        console.log("Our register url is " + self.login)
-        fetch(self.login, {
+    function register(user, pass) {
+        console.log("Sending " + JSON.stringify({username:user, password: pass}))
+        fetch(self.url, {
             method: 'post',
-            body: JSON.stringify({username: username, password: password}),
+            body: JSON.stringify({ username: user, password: pass}),
             headers: {
                 'content-type': 'application/json'
             }
         }).then( function(resp) {
+            console.log("Sent the following:" + JSON.stringify({ username: user, password: pass}));
             return resp.json()});
+
+
     }
 }
