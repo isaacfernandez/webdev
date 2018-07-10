@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Login</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="/jquery/models/user.model.client.js"> </script>
+    <script src="/jquery/service/user.service.client.js"></script>
+    <script src="login.controller.client.js"> </script>
+
+
+
+</head>
+<body>
+<h1>Login</h1>
+<div class="form-group">
+    <label for="usernameFld">Username: </label>
+    <input type="email" id="usernameFld"/>
+</div>
+<div class="form-group">
+    <label for="passwordFld">Password: </label>
+    <input type="password" id="passwordFld"/>
+</div>
+
+<button id="loginBtn">Login</button>
+</body>
+</html>
