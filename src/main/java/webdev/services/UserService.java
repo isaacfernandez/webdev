@@ -25,8 +25,12 @@ public class UserService {
     @PostMapping("/api/register")
     public User register(@RequestBody User user, HttpSession session) {
         if (this.findUserByUsername(user.getUsername()) == null) {
-            return userRepository.save(user);
+            System.out.println("User is unique, saving.");
+            User newUser =  userRepository.save(user);
+            session.setAttribute("currentUser", newUser.getId());
+            return newUser;
         } else {
+            System.out.println("user already exists");
             return null;
         }
     }
@@ -76,11 +80,7 @@ public class UserService {
 
     @GetMapping("/api/user/{username}")
     public User findUserByUsername(@PathVariable("username") String username) {
-        User data = userRepository.findUserByUsername(username);
-            if(data == null) {
-            return data;
-        }
-        return data;
+        return  userRepository.findUserByUsername(username);
     }
 
     @GetMapping("/api/user")
