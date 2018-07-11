@@ -21,6 +21,7 @@
     //TODO: Include visual signs of success and failure
     function logout() {
         userService.logout();
+        window.location.href = "http://localhost:8080/jquery/components/login/login.template.client.html";
     }
 
 
