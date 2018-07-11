@@ -3,6 +3,8 @@ function UserService() {
     this.logon = logon;
     this.logout = logout;
     this.update = update;
+    this.findAllUsers = findAllUsers;
+    this.deleteUser = deleteUser;
     this.url =
         'http://localhost:8080/api/user';
     this.login =
@@ -56,6 +58,27 @@ function UserService() {
             method: 'put',
             body: JSON.stringify(user),
             'credentials': 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (resp) {
+            return resp.json()
+        });
+    }
+
+    function deleteUser(id) {
+        return fetch(self.url + "/" + id, {
+            method: 'delete',
+            'credentials': "include"
+        }).then( function (resp) {
+            return resp.json()
+        });
+
+    }
+
+    function findAllUsers() {
+        return  fetch(self.url, {
+            method: 'get',
             headers: {
                 'content-type': 'application/json'
             }
