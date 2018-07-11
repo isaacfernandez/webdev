@@ -15,9 +15,18 @@
         var pass2 = $("#confirmPasswordFld").val();
         if (pass == pass2 && username.length > 0) {
             console.log("Registering " + username + ":" + pass);
-            console.log( userService.register(username, pass) )
+            userService.register(username, pass).then(goToProfile,
+                function(resp) {
+                    console.log("no login" + resp);
+                }
+            )
         } else {
             console.log("Error, something missing");
         }
+    }
+
+    function goToProfile() {
+        console.log('goto');
+        window.location.href = 'http://localhost:8080/jquery/components/profile/profile.template.client.html';
     }
 })();

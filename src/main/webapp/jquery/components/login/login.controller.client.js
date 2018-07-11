@@ -10,13 +10,22 @@
     function login() {
         var username = $("#usernameFld").val();
         var pass = $("#passwordFld").val();
-        if ( username.length > 0) {
+        if (username.length > 0) {
             console.log("accessing as " + username + ":" + pass);
-            status = userService.logon(username, pass);
-            console.log(status);
-            //if success window.location.href = profile
+            userService.logon(username, pass).then(goToProfile,
+                function (loss) {
+                    console.log("Is this loss?")
+                });
         } else {
             console.log("Error, something missing");
         }
+    }
+
+    function loginError() {
+        //paint a pretty red picture on error
+    }
+
+    function goToProfile() {
+        window.location.href = 'http://localhost:8080/jquery/components/profile/profile.template.client.html';
     }
 })();

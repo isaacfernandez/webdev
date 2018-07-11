@@ -12,7 +12,9 @@ function UserService() {
     this.outURL =
         'http://localhost:8080/api/logout';
     this.profile =
-        'http://localhost:8080/api/profile'
+        'http://localhost:8080/api/profile';
+    this.regURL =
+        'http://localhost:8080//api/register';
 
     self = this;
 
@@ -20,7 +22,7 @@ function UserService() {
     //Refactor, only difference is URL
     function register(user, pass) {
         console.log("Sending " + JSON.stringify({username: user, password: pass}))
-        fetch(self.url, {
+        return fetch(self.regURL, {
             method: 'post',
             body: JSON.stringify({username: user, password: pass}),
             headers: {
