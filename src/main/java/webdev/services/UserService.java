@@ -43,6 +43,37 @@ public class UserService {
         }
     }
 
+    @PostMapping("/api/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+    @GetMapping("/profile")
+    public User getUserSession(HttpSession session) {
+        int userId = (int) session.getAttribute("currentUser");
+        return findUserById(userId);
+    }
+
+    @PutMapping("/api/profile")
+    public User updateProfile(@RequestBody User user, HttpSession session) {
+        try {
+            int userId = (int) session.getAttribute("currentUser");
+            User u = findUserById(userId);
+            u.setEmail(user.getEmail());
+            u.setPhone(user.getPhone());
+            u.setDateOfBirth(user.getDateOfBirth());
+            u.setFirstName(user.getFirstName());
+            u.setLastName(user.getLastName());
+            userRepository.save(u);
+            return u;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+
+    }
+
+
     @GetMapping("/api/user/{username}")
     public User findUserByUsername(@PathVariable("username") String username) {
         User data = userRepository.findUserByUsername(username);
@@ -74,7 +105,6 @@ public class UserService {
             user.setFirstName(uUser.getFirstName());
             user.setLastName(uUser.getLastName());
             user.setEmail(uUser.getEmail());
-
             userRepository.save(user);
             return user;
         }
