@@ -7,6 +7,8 @@ function UserService() {
         'http://localhost:8080/api/user';
     this.login =
         'http://localhost:8080/api/login';
+    this.outURL =
+        'http://localhost:8080/api/logout';
     this.profile =
         'http://localhost:8080/api/profile'
 
@@ -42,7 +44,11 @@ function UserService() {
     }
 
     function logout() {
-
+        return fetch(this.outURL, {
+            method: 'post'
+        }).then(function (resp) {
+            return resp.json()
+        });
     }
 
     function update(user) {
