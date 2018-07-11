@@ -31,6 +31,17 @@ public class UserService {
         }
     }
 
+    @PostMapping("/api/login")
+    public User login(@RequestBody User user, HttpSession session) {
+        user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+        if (user != null) {
+            session.setAttribute("currentUser", user.getId());
+            System.out.println("Successful log in by " + user.getUsername());
+            return user;
+        } else {
+            return null;
+        }
+    }
 
     @GetMapping("/api/user/{username}")
     public User findUserByUsername(@PathVariable("username") String username) {
@@ -54,5 +65,27 @@ public class UserService {
         }
         return null;
     }
-}
+
+    @PutMapping("/api/user/{userId}")
+    public User updateUser(@PathVariable("userId") int userId, @RequestBody User uUser){
+        Optional<User> data = userRepository.findById(userId);
+        if(data.isPresent()) {
+            User user = data.get();
+            user.setFirstName(uUser.getFirstName());
+            user.setLastName(uUser.getLastName());
+            user.setEmail(uUser.getEmail());
+
+            userRepository.save(user);
+            return user;
+        }
+        return null;
+    }
+
+    @DeleteMapping("/api/user/{userId}")
+    public void deleteUser(@PathVariable("userId") int userId) {
+
+        userRepository.deleteById(userId);
+    }
+
+ }
 
