@@ -2,6 +2,16 @@
    Mostly here for the assignment, I don't think the table currently needs custom CSS beyond BootStrap / FA
  */
 
-table {
+
+
+.table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
     border-style: outset;
+}
+
+button {
+    border-radius: 5px;
 }
