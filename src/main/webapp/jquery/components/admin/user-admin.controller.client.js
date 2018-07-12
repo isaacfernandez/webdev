@@ -7,8 +7,7 @@
             .findAllUsers()
             .then(renderUsers);
     }
-
-    $("#addBtn").click(addUser);
+    $("#addBtn").click(userFromField);
     init();
 
     function renderUsers(users) {
@@ -41,10 +40,6 @@
             tr.append(td);
 
             td = $('<td>');
-            td.append('Student');
-            tr.append(td);
-
-            td = $('<td>');
             var deleteBtn = $('<button>DELETE</button>');
             deleteBtn.click(deleteUser);
             deleteBtn.attr('id', user.id);
@@ -70,15 +65,14 @@
         user["email"] = $("#emailFld").val();
         user["firstName"] = $("#firstNameFld").val();
         user["lastName"] = $("#lastNameFld").val();
-        //user["phone"] = $("#phoneFld").val();
-        //user["dob"] = $("#dobFld").val();
         user["role"] = $("#roleFld").val();
         return user;
     }
 
-    function addUser() {
+    function userFromField() {
+        console.log('adding');
         var newUser = readFromEdit();
-        userService.addUser(user).then(init);
+        userService.addUser(newUser).then(init);
     }
 
     function editUser(event) {

@@ -15,19 +15,24 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    //rewire register to this
-    @PostMapping("/api/user")
-    public User createUser(@RequestBody User user) {
-        System.out.println(user.getUsername() +":"+ user.getPassword());
-        return userRepository.save(user);
-    }
-
     @PostMapping("/api/register")
     public User register(@RequestBody User user, HttpSession session) {
         if (this.findUserByUsername(user.getUsername()) == null) {
             System.out.println("User is unique, saving.");
             User newUser =  userRepository.save(user);
             session.setAttribute("currentUser", newUser.getId());
+            return newUser;
+        } else {
+            System.out.println("user already exists");
+            return null;
+        }
+    }
+
+    //Secondary register interface for doing it as administrator
+    @PostMapping("/api/user")
+    public User addUser(@RequestBody User user) {
+        if (this.findUserByUsername(user.getUsername()) == null) {
+            User newUser =  userRepository.save(user);
             return newUser;
         } else {
             System.out.println("user already exists");
@@ -63,6 +68,7 @@ public class UserService {
         try {
             int userId = (int) session.getAttribute("currentUser");
             User u = findUserById(userId);
+            System.out.println("User retrieved: " + u);
             u.setEmail(user.getEmail());
             u.setPhone(user.getPhone());
             u.setDateOfBirth(user.getDateOfBirth());
@@ -105,6 +111,7 @@ public class UserService {
             user.setFirstName(uUser.getFirstName());
             user.setLastName(uUser.getLastName());
             user.setEmail(uUser.getEmail());
+            user.setEmail(uUser.getRole());
             userRepository.save(user);
             return user;
         }
