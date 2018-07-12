@@ -14,7 +14,7 @@ function UserService() {
     this.profile =
         'http://localhost:8080/api/profile';
     this.regURL =
-        'http://localhost:8080//api/register';
+        'http://localhost:8080/api/register';
 
     self = this;
 
@@ -56,7 +56,7 @@ function UserService() {
     }
 
     function update(user) {
-        return fetch(this.profile, {
+        return fetch(this.url + "/" + user.id, {
             method: 'put',
             body: JSON.stringify(user),
             'credentials': 'include',

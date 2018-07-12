@@ -7,6 +7,8 @@
             .findAllUsers()
             .then(renderUsers);
     }
+
+    $("#addBtn").click(addUser);
     init();
 
     function renderUsers(users) {
@@ -22,8 +24,8 @@
             td.append(user.username);
             tr.append(td);
 
-            td = $('<td>');
-            td.append('*******');
+            td = $('<td class="hide">');
+            td.append(user.password);
             tr.append(td);
 
             td = $('<td>');
@@ -49,8 +51,44 @@
             td.append(deleteBtn);
             tr.append(td);
 
+            td = $('<td>');
+            var editBtn = $('<button>EDIT</button>');
+            editBtn.click(editUser);
+            editBtn.attr('id', user.id);
+            td.append(editBtn);
+            tr.append(td);
+
+
+
             tr.appendTo(tbody);
         }
+    }
+
+    function readFromEdit() {
+        var user = new User();
+        user["username"] = $("#usernameFld").val();
+        user["email"] = $("#emailFld").val();
+        user["firstName"] = $("#firstNameFld").val();
+        user["lastName"] = $("#lastNameFld").val();
+        //user["phone"] = $("#phoneFld").val();
+        //user["dob"] = $("#dobFld").val();
+        user["role"] = $("#roleFld").val();
+        return user;
+    }
+
+    function addUser() {
+        var newUser = readFromEdit();
+        userService.addUser(user).then(init);
+    }
+
+    function editUser(event) {
+        var $btn = $(event.currentTarget);
+        var uID = $btn.attr('id');
+        var user = readFromEdit();
+        user.id = uID;
+        console.log(user);
+        userService.update(user)
+            .then(init);
     }
 
     function deleteUser(event) {
@@ -60,10 +98,6 @@
 
         userService
             .deleteUser(id)
-            .then(function () {
-                userService
-                    .findAllUsers()
-                    .then(renderUsers);
-            });
+            .then(init);
     }
 })();

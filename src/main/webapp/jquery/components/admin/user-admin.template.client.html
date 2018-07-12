@@ -12,11 +12,13 @@
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/jquery/service/user.service.client.js"></script>
+<script src="/jquery/models/user.model.client.js"> </script>
 <script src="user-admin.controller.client.js"></script>
 </head>
 
 <body>
-
+<h1> User Administration</h1>
+<div class=container">
 <table id="admin_table" class="table">
   <thead>
     <tr>
@@ -43,7 +45,7 @@
       <option value="ADMIN">Admin</option>
 <td>
         <span class="float-right">
-          <i id="wbdv-addBtn" class="fa-2x fa fa-plus"></i>
+          <button id="addBtn" class="fa-2x fa fa-plus"></button>
         </span>
 </td>
 
@@ -63,5 +65,5 @@
 	   </tr>
 	 </tbody>
 </table>
-
+</div>
 </body>
