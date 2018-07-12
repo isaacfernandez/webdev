@@ -1,8 +1,10 @@
 function UserService() {
     this.register = register;
+    this.addUser = addUser;
     this.logon = logon;
     this.logout = logout;
     this.update = update;
+    this.updateProfile = updateProfile;
     this.findAllUsers = findAllUsers;
     this.deleteUser = deleteUser;
     this.url =
@@ -19,7 +21,6 @@ function UserService() {
     self = this;
 
 
-    //Refactor, only difference is URL
     function register(user, pass) {
         console.log("Sending " + JSON.stringify({username: user, password: pass}))
         return fetch(self.regURL, {
@@ -31,6 +32,20 @@ function UserService() {
         }).then(function (resp) {
             console.log("Sent the following:" + JSON.stringify({username: user, password: pass}));
             return resp.json()
+        });
+    }
+
+    //unlike register, this is for use with the admin interface -- avoids overwriting user session
+    function addUser(user) {
+        console.log('service adding user');
+        return fetch(self.url, {
+            method: 'post',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (resp) {
+            return resp.json();
         });
     }
 
@@ -50,6 +65,19 @@ function UserService() {
     function logout() {
         return fetch(this.outURL, {
             method: 'post'
+        }).then(function (resp) {
+            return resp.json()
+        });
+    }
+
+    function updateProfile(user) {
+        return fetch(this.profile, {
+            method: 'put',
+            body: JSON.stringify(user),
+            'credentials': 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
         }).then(function (resp) {
             return resp.json()
         });

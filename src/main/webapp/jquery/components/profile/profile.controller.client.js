@@ -34,7 +34,7 @@
         user["phone"] = $("#phoneFld").val();
         user["dateOfBirth"] = $("#dobFld").val();
         user["role"] = $("#roleFld").val();
-        userService.update(user).then(updateSuccess, updateFail);
+        userService.updateProfile(user).then(updateSuccess, updateFail);
     }
 
     function updateSuccess(){
