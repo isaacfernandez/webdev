@@ -8,45 +8,48 @@
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script src="/jquery/models/user.model.client.js"> </script>
+    <script src="/jquery/models/user.model.client.js"></script>
     <script src="/jquery/service/user.service.client.js"></script>
-    <script src="profile.controller.client.js"> </script>
+    <script src="profile.controller.client.js"></script>
 <body>
-<h1>Profile</h1>
-<div class="form-group">
-    <label for="usernameFld">Username: </label>
-    <input readonly class="form-control" type="email" id="usernameFld"/>
+<div class="main">
+    <div class="container-fluid">
+        <h1>Profile</h1>
+        <div class="form-group">
+            <label for="usernameFld">Username: </label>
+            <input readonly class="form-control" type="email" id="usernameFld"/>
+        </div>
+        <div class="form-group">
+            <label for="emailFld">Email: </label>
+            <input class="form-control" type="string" id="emailFld"/>
+        </div>
+        <div class="form-group">
+            <label for="firstnameFld">First Name: </label>
+            <input class="form-control" type="string" id="firstnameFld"/>
+        </div>
+        <div class="form-group">
+            <label for="lastnameFld">Last Name: </label>
+            <input class="form-control" type="string" id="lastnameFld"/>
+        </div>
+        <div class="form-group">
+            <label for="phoneFld">Phone Number: </label>
+            <input class="form-control" type="tel" id="phoneFld"/>
+        </div>
+        <div class="form-group">
+            <label for="dobFld">Date of Birth: </label>
+            <input class="form-control" type="date" id="dobFld"/>
+        </div>
+        <div class="form-group">
+            <label for="roleFld">Select list:</label>
+            <select class="form-control" id="roleFld">
+                <option>Student</option>
+                <option>Faculty</option>
+                <option>Admin</option>
+            </select>
+        </div>
+        <button id="updateBtn">Update</button>
+        <button id="logoutBtn">Logout</button>
+    </div>
 </div>
-<div class="form-group">
-    <label for="emailFld">Email: </label>
-    <input class="form-control" type="string" id="emailFld"/>
-</div>
-<div class="form-group">
-    <label for="firstnameFld">First Name: </label>
-    <input class="form-control" type="string" id="firstnameFld"/>
-</div>
-<div class="form-group">
-    <label for="lastnameFld">Last Name: </label>
-    <input class="form-control" type="string" id="lastnameFld"/>
-</div>
-<div class="form-group">
-    <label for="phoneFld">Phone Number: </label>
-    <input class="form-control" type="tel" id="phoneFld"/>
-</div>
-<div class="form-group">
-    <label for="dobFld">Date of Birth: </label>
-    <input class="form-control" type="date" id="dobFld"/>
-</div>
-<div class="form-group">
-    <label for="roleFld">Select list:</label>
-    <select class="form-control" id="roleFld">
-        <option>Student</option>
-        <option>Faculty</option>
-        <option>Admin</option>
-    </select>
-</div>
-<button id="updateBtn">Update</button>
-<button id="logoutBtn">Logout</button>
-
 </body>
 </html>

@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/jquery/components/login/login.style.client.css" rel="stylesheet"/>
     <title>Register</title>
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script src="/jquery/models/user.model.client.js"> </script>
+    <script src="/jquery/models/user.model.client.js"></script>
     <script src="/jquery/service/user.service.client.js"></script>
-    <script src="register.controller.client.js"> </script>
-
+    <script src="register.controller.client.js"></script>
 
 
 </head>
 <body>
-    <h1>Register</h1>
-    <div class="form-group">
-        <label for="usernameFld">Username: </label>
-        <input type="email" id="usernameFld"/>
-    </div>
-    <div class="form-group">
-        <label for="passwordFld">Password: </label>
-        <input type="password" id="passwordFld"/>
-    </div>
-    <div class="form-group">
-        <label for="confirmPasswordFld">Confirm Password: </label>
-        <input type="password" id="confirmPasswordFld"/>
-    </div>
+<div id="main">
+    <div class="container-fluid">
+        <h1>Register</h1>
+        <div class="form-group">
+            <label class="control-label text-centered" for="usernameFld">Username: </label>
+            <input class="form-control" type="email" id="usernameFld"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label text-centered" for="passwordFld">Password: </label>
+            <input class="form-control" type="password" id="passwordFld"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label text-centered" for="confirmPasswordFld">Confirm Password: </label>
+            <input class="form-control" type="password" id="confirmPasswordFld"/>
+        </div>
         <button id="registerBtn">Register</button>
-<a href="/jquery/components/login/login.template.client.html"> Log In!</a>
+        <a class="float-right" href="/jquery/components/login/login.template.client.html"><button>Log In!</button></a>
+    </div>
+</div>
 </body>
 </html>
