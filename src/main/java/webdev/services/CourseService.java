@@ -19,6 +19,7 @@ public class CourseService {
      * creates a course
      * POST /api/course
      **/
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
         Course c = courseRepository.save(course);
@@ -30,6 +31,7 @@ public class CourseService {
      * deletes a course by id
      * DELETE /api/course/{id}
      **/
+    @CrossOrigin(origins = "*")
     @DeleteMapping("api/course/{id}")
     public boolean deleteCourse(@PathVariable("id") int id) {
         try {
@@ -45,6 +47,7 @@ public class CourseService {
      * retrieves all the courses
      * GET /api/course
      **/
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/course")
     public List<Course> findAllCourses() {
         return (List<Course>) courseRepository.findAll();
@@ -55,6 +58,7 @@ public class CourseService {
      * retrieves a course by id
      * GET /api/course/{id}
      **/
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/course/{id}")
     public Course findCourseById(@PathVariable("id") int id) {
         Optional<Course> c = courseRepository.findById(id);
@@ -70,6 +74,7 @@ public class CourseService {
      * updates a course by id
      * PUT /api/course/{id}
      **/
+    @CrossOrigin(origins = "*")
     @PutMapping("/api/course/{id}")
     public Course updateCourse(@PathVariable("id") int id, @RequestBody Course course) {
         Optional<Course> c = courseRepository.findById(id);
