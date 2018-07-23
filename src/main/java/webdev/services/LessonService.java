@@ -1,6 +1,5 @@
 package webdev.services;
 
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.web.bind.annotation.*;
 import webdev.models.Lesson;
 import webdev.models.Module;

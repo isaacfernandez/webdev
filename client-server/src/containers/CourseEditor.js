@@ -23,7 +23,7 @@ export default class CourseEditor extends React.Component {
     render() {
         return(
             <div className="container-fluid">
-            <h1> Module! </h1>
+            <h1> Modules </h1>
             <ModuleList courseId={this.state.courseId}/>
             </div>
         );

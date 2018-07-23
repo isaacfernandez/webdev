@@ -3,7 +3,7 @@ package webdev;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "webdev")
 public class CourseManagerMain {
 
     public static void main(String[] args) {

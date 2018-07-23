@@ -120,7 +120,6 @@ public class UserService {
 
     @DeleteMapping("/api/user/{userId}")
     public void deleteUser(@PathVariable("userId") int userId) {
-
         userRepository.deleteById(userId);
     }
 
