@@ -19,9 +19,17 @@ public class LessonService {
      * POST /api/course/{cid}/lesson
      **/
     @PostMapping("/api/course/{cid}/module/{mid}/lesson")
-    public Lesson createLesson(@PathVariable(name="mid") int mid) {
+    public Lesson createLesson(@PathVariable(name="mid") int mid, @RequestBody Lesson lesson) {
         Optional<Module> optionalModule = moduleRepository.findById(mid);
-        // ...
+        if (optionalModule.isPresent()) {
+            Module m = optionalModule.get();
+            List<Lesson> ls = m.getLessons();
+            ls.add(lesson);
+            m.setLessons(ls);
+            moduleRepository.save(m);
+            lessonRepository.save(lesson);
+            return lesson;
+        }
         return null;
     }
 
@@ -65,6 +73,15 @@ public class LessonService {
      retrieves all lessons for course
      GET /api/course/{cid}/lesson
      **/
+    @GetMapping("/api/course/{cid}/module/{mid}lesson")
+    public List<Lesson> findAllLessonsForCourse(@PathVariable("cid") int id, @PathVariable("mid") int mid) {
+        Optional<Module> m  = moduleRepository.findById(mid);
+        if (m.isPresent()){
+            Module mod = m.get();
+            return mod.getLessons();
+        }
+        return null;
+    }
 
     /**
      * updateLesson

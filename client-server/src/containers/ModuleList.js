@@ -101,7 +101,7 @@ export default class ModuleList extends Component {
                     {this.renderListOfModules()}
                 </ul>
             </div>
-            <div className="col-6 pull-right">
+            <div className="col-6">
                 <ModuleEditor module={this.state.selectedModule} />
             </div>
         </div>);

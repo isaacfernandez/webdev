@@ -5,7 +5,7 @@ import LessonTabs from "./LessonTabs";
 export default class ModuleEditor extends React.Component {
 
     render() {
-        if (this.props.module.title === '') {
+        if (typeof this.props.module.title === 'undefined') {
             return null;
         } else {
             return (

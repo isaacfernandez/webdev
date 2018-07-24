@@ -1,6 +1,6 @@
 
 const MODULE_API_URL =
-    'http://localhost:8080/api/course/CID/module';
+    'http://localhost:8080/api/course/CID/module/MID';
 const BASE_URL =
     'http://localhost:8080/api/module/MID'
 
@@ -11,16 +11,16 @@ export default class LessonService {
             throw new Error('Singleton!!!');
     }
 
-    findAllModulesForCourse(courseId) {
+    findAllLessonsForModule(moduleId) {
         return fetch(
             MODULE_API_URL
-                .replace('CID', courseId))
+                .replace('MID', moduleId))
             .then(function (response) {
                 return response.json();
             })
     }
 
-    createModule(courseId, module) {
+    createLesson(courseId, module) {
         return fetch(MODULE_API_URL.replace('CID', courseId),
             {
                 body: JSON.stringify(module),
@@ -41,7 +41,7 @@ export default class LessonService {
 
     static get instance() {
         if(!this[_singleton])
-            this[_singleton] = new ModuleService(_singleton);
+            this[_singleton] = new LessonService(_singleton);
         return this[_singleton]
     }
 }
