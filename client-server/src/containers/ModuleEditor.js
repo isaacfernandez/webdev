@@ -11,7 +11,7 @@ export default class ModuleEditor extends React.Component {
             return (
                 <div>
                     <h2>{this.props.module.title}</h2>
-                    <LessonTabs/>
+                    <LessonTabs id={this.props.module.id}/>
                 </div>
 
             );

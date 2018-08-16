@@ -4,18 +4,22 @@ import LessonService from "../services/LessonService";
 
 
 export default class LessonTabs extends React.Component {
-    LessonService;
 
     constructor() {
         super();
         this.state = {
+            moduleID: null,
             lessonTitle: '',
             lessons: []
         };
+
         this.setLessons = this.setLessons.bind(this);
+        this.findLessonsForModule = this.findLessonsForModule.bind(this);
+
         this.renderAllLesson = this.renderAllLesson.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.createLesson = this.createLesson.bind(this);
+        this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
     }
 
@@ -23,29 +27,57 @@ export default class LessonTabs extends React.Component {
         this.setState({lessons: lessons});
     }
 
-    findLessonsForModule(moduleId) {
+    setModuleID(mID) {
+        this.setState({moduleID: mID});
 
     }
 
-    createLesson() {
+    findLessonsForModule() {
+        console.log("pulling lessons");
+        this.lessonService.findAllLessonsForModule(this.props.id)
+            .then( (ll) => this.setLessons(ll) )
+    }
+
+    createLesson(l_title) {
         this.lessonService
-            .createLesson(this.props.id, this.state.lessonTitle);
+            .createLesson(this.props.id, l_title)
+            .then(()  => this.findLessonsForModule(this.state.id));
+    }
+
+    deleteLesson(lessonID) {
+        this.lessonService.deleteLesson(lessonID)
+            .then( () => this.findLessonsForModule());
     }
 
 
     renderAllLesson() {
-        let lessons = this.state.lessons.map(function (lesson) {
+        console.log(this.state);
+        let self = this;
+        let rendered = this.state.lessons.map(function (lesson) {
             return <Lesson
-                module={lesson}
+                lesson={lesson}
                 key={lesson.id}
-                del={this.deleteModule}/>
+                del={self.deleteLesson}
+            />
         });
+        return rendered;
     }
 
     titleChanged(event) {
-        console.log("changing state");
         this.setState({lessonTitle: event.target.value});
     }
+
+    componentWillReceiveProps(newProps) {
+        this.setModuleID(newProps.id);
+        this.findLessonsForModule();
+    }
+
+
+    componentDidMount() {
+        this.setModuleID(this.props.id);
+        this.findLessonsForModule();
+    }
+
 
     render() {
         return (
@@ -61,7 +93,9 @@ export default class LessonTabs extends React.Component {
                                 className="btn btn-primary">Create</button>
                     </div>
                 </div>
+                <div className="row">
                 {this.renderAllLesson()}
+                </div>
             </div>);
     }
 }

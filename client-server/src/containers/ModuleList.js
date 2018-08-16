@@ -17,8 +17,7 @@ export default class ModuleList extends Component {
         this.expand = this.expand.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
 
-        this.setCourseId =
-            this.setCourseId.bind(this);
+        this.setCourseId = this.setCourseId.bind(this);
         this.setModules = this.setModules.bind(this);
 
         this.moduleService = ModuleService.instance;
@@ -74,7 +73,7 @@ export default class ModuleList extends Component {
 
     renderListOfModules() {
         console.log("Printing modules");
-        var self = this;
+        let self = this;
         let modules = this.state.modules.map(function (module) {
             return <ModuleListItem
                 module={module}
@@ -82,6 +81,7 @@ export default class ModuleList extends Component {
                 expand={self.expand}
                 del={self.deleteModule}/>
         });
+        console.log(modules.length + " odules printed")
         return modules;
     }
 

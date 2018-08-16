@@ -1,7 +1,8 @@
 
 const MODULE_API_URL =
-    'http://localhost:8080/api/course/CID/module/MID/lesson';
+    'http://localhost:8080"/api/course/CID/module/MID/lesson';
 const BASE_URL =
+
     'http://localhost:8080/api/module/MID'
 
 let _singleton = Symbol();
@@ -14,7 +15,7 @@ export default class LessonService {
     findAllLessonsForModule(moduleId) {
         return fetch(
             MODULE_API_URL
-                .replace('MID', moduleId).replace('CID', 1))
+                .replace('MID', moduleId))
             .then(function (response) {
                 return response.json();
             })
@@ -22,30 +23,27 @@ export default class LessonService {
 
     createLesson(mid, l) {
         return fetch(MODULE_API_URL.replace('CID', 1)
-                .replace('MID', mid),
+                .replace('MID', mid  ),
             {
                 body: JSON.stringify(l),
-                mode: "no-cors", // no-cors, cors, *same-origin
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 method: 'POST'
-            }).then(function (resp) {
-            return resp;
-        });
+            }).then(function (resp)
+        { return resp.json(); })
     }
 
-    deleteLesson(lessonID) {
-        return fetch('http://localhost:8080/api/lesson/' + lessonID,
+    deleteModule(moduleId) {
+        return fetch(BASE_URL.replace('MID', moduleId),
             {
                 method: 'DELETE'
-            }).then(function (resp) {
+            }).then(function(resp) {
             return "empty";
         });
     }
 
     static get instance() {
-        if (!this[_singleton])
+        if(!this[_singleton])
             this[_singleton] = new LessonService(_singleton);
-        return this[_singleton];
+        return this[_singleton]
     }
-
 }
