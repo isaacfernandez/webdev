@@ -1,6 +1,7 @@
 package webdev.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 
@@ -102,6 +103,7 @@ public class Widget {
         this.order = order;
     }
 
+    @JsonIgnore
     public Lesson getLesson() {
         return lesson;
     }

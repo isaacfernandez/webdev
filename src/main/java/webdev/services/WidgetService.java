@@ -36,9 +36,9 @@ public class WidgetService {
     @CrossOrigin(origins = "*")
     @GetMapping("/api/lesson/{lessonId}/widget")
     public List<Widget> findWidgetsByLesson(@PathVariable("lessonId") int lessonId) {
-        Optional<Lesson> isLesson = lessonRepository.findById(lessonId);
-        if(isLesson.isPresent()) {
-            Lesson lesson = isLesson.get();
+        Optional<Lesson> maybe = lessonRepository.findById(lessonId);
+        if(maybe.isPresent()) {
+            Lesson lesson = maybe.get();
             return lesson.getWidgets();
         }
         return null;

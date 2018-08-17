@@ -43,8 +43,8 @@ public class Lesson {
     public void setModule(Module module) {
         this.module = module;
     }
-    
-    @JsonIgnore
+
+
     public List<Widget> getWidgets() {
         return this.widgets;
     }
