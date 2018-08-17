@@ -8,15 +8,15 @@ function UserService() {
     this.findAllUsers = findAllUsers;
     this.deleteUser = deleteUser;
     this.url =
-        'http://localhost:8080/api/user';
+        'https://wbdv-s2-1.herokuapp.com/api/user';
     this.login =
-        'http://localhost:8080/api/login';
+        'https://wbdv-s2-1.herokuapp.com/api/login';
     this.outURL =
-        'http://localhost:8080/api/logout';
+        'https://wbdv-s2-1.herokuapp.com/api/logout';
     this.profile =
-        'http://localhost:8080/api/profile';
+        'https://wbdv-s2-1.herokuapp.com/api/profile';
     this.regURL =
-        'http://localhost:8080/api/register';
+        'https://wbdv-s2-1.herokuapp.com/api/register';
 
     self = this;
 

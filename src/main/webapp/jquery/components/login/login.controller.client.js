@@ -26,6 +26,6 @@
     }
 
     function goToProfile() {
-        window.location.href = 'http://localhost:8080/jquery/components/profile/profile.template.client.html';
+        window.location.href = 'https://wbdv-s2-1.herokuapp.com/jquery/components/profile/profile.template.client.html';
     }
 })();
