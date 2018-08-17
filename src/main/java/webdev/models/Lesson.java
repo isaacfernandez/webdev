@@ -7,18 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name="lesson")
+@Entity(name = "lesson")
 public class Lesson {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     @ManyToOne
     @JsonIgnore
     private Module module;
-    @JsonIgnore
-    @OneToMany(mappedBy="lesson")
+    @OneToMany(mappedBy = "lesson")
     private List<Widget> widgets;
+
 
     public int getId() {
         return id;
