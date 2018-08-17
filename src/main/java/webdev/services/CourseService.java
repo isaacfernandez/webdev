@@ -19,7 +19,7 @@ public class CourseService {
      * creates a course
      * POST /api/course
      **/
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
         Course c = courseRepository.save(course);
