@@ -16,7 +16,7 @@ public class Lesson {
     @ManyToOne
     @JsonIgnore
     private Module module;
-    @OneToMany(mappedBy = "lesson")
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Widget> widgets;
 
