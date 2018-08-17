@@ -16,6 +16,7 @@ public class Lesson {
     @ManyToOne
     @JsonIgnore
     private Module module;
+    @JsonIgnore
     @OneToMany(mappedBy="lesson")
     private List<Widget> widgets;
 

@@ -103,7 +103,6 @@ public class Widget {
         this.order = order;
     }
 
-    @JsonIgnore
     public Lesson getLesson() {
         return lesson;
     }
