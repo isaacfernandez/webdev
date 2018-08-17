@@ -20,7 +20,7 @@ public class Widget {
     private String listType;
     private int order;
     @ManyToOne
-    @JoinColumn(name = "lesson")
+    @JsonIgnore
     private Lesson lesson;
 
     public int getId() {
