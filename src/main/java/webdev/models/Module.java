@@ -17,7 +17,6 @@ public class Module {
     @JsonIgnore
     private Course course;
     @OneToMany(mappedBy = "module", cascade = CascadeType.REMOVE)
-    @JsonIgnore
     private List<Lesson> lessons;
 
     public List<Lesson> getLessons() {
