@@ -52,10 +52,10 @@ public class WidgetService {
         if (optional.isPresent()) {
             Widget thisWidget = optional.get();
             thisWidget.setTitle(widget.getTitle());
-            thisWidget.setData(widget.getData());
+            thisWidget.setText(widget.getText());
             thisWidget.setSize(widget.getSize());
             thisWidget.setId(widget.getId());
-            thisWidget.setLink(widget.getLink());
+            thisWidget.setHref(widget.getHref());
             thisWidget.setSource(widget.getSource());
             thisWidget.setListType(widget.getListType());
             thisWidget.setListItems(widget.getListItems());

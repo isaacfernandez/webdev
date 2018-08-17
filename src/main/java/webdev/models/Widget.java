@@ -1,27 +1,31 @@
 package webdev.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
-import javax.persistence.*;
-
-@Entity
+@Entity(name="widget")
 public class Widget {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private String type;
-    private String data;
+    private String text;
     private String size;
-    private String link;
+    private String href;
     private String source;
     private String listItems;
     private String listType;
-    private int order;
+    private int ordering;
     @ManyToOne
     @JsonIgnore
     private Lesson lesson;
+
 
     public int getId() {
         return id;
@@ -47,12 +51,12 @@ public class Widget {
         this.type = type;
     }
 
-    public String getData() {
-        return data;
+    public String getText() {
+        return text;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getSize() {
@@ -63,12 +67,12 @@ public class Widget {
         this.size = size;
     }
 
-    public String getLink() {
-        return link;
+    public String getHref() {
+        return href;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setHref(String href) {
+        this.href = href;
     }
 
     public String getSource() {
@@ -95,14 +99,6 @@ public class Widget {
         this.listType = listType;
     }
 
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
     public Lesson getLesson() {
         return lesson;
     }
@@ -110,4 +106,13 @@ public class Widget {
     public void setLesson(Lesson lesson) {
         this.lesson = lesson;
     }
+
+    public int getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(int ordering) {
+        this.ordering = ordering;
+    }
+
 }
