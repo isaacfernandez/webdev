@@ -12,7 +12,6 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin(origins = "*")
 public class WidgetService {
 
     @Autowired
@@ -21,17 +20,20 @@ public class WidgetService {
     @Autowired
     LessonRepository lessonRepository;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/widget")
     public List<Widget> findAllWidgets() {
         return (List<Widget>) widgetRepository.findAll();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/widget/{widgetId}")
     public Optional<Widget> findWidgetById(@PathVariable("widgetId") String widgetId) {
         int id = Integer.parseInt(widgetId);
         return widgetRepository.findById(id);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/lesson/{lessonId}/widget")
     public List<Widget> findWidgetsByLesson(@PathVariable("lessonId") int lessonId) {
         Optional<Lesson> isLesson = lessonRepository.findById(lessonId);
@@ -42,6 +44,7 @@ public class WidgetService {
         return null;
     }
 
+    @CrossOrigin(origins = "*")
     @PutMapping("/api/widget/{widgetId}")
     public void updateWidget(@PathVariable("widgetId") int widgetId, @RequestBody Widget widget) {
         Optional<Widget> optional = widgetRepository.findById(widgetId);
@@ -61,6 +64,8 @@ public class WidgetService {
         }
     }
 
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/lesson/{lessonId}/widget")
     public void createWidget(@PathVariable("lessonId") int lessonId,
                              @RequestBody Widget newWidget) {
@@ -73,6 +78,7 @@ public class WidgetService {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/lesson/{lessonId}")
     public void saveWidgets(@PathVariable("lessonId") int lessonId,
                             @RequestBody List<Widget> widgets) {
