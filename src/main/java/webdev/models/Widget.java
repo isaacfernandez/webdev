@@ -18,7 +18,7 @@ public class Widget {
     private String text;
     private String size;
     private String href;
-    private String source;
+    private String src;
     private String listItems;
     private String listType;
     private int ordering;
@@ -75,12 +75,12 @@ public class Widget {
         this.href = href;
     }
 
-    public String getSource() {
-        return source;
+    public String getSrc() {
+        return src;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSrc(String src) {
+        this.src = src;
     }
 
     public String getListItems() {

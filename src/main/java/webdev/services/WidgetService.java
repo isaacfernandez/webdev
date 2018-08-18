@@ -56,7 +56,7 @@ public class WidgetService {
             thisWidget.setSize(widget.getSize());
             thisWidget.setId(widget.getId());
             thisWidget.setHref(widget.getHref());
-            thisWidget.setSource(widget.getSource());
+            thisWidget.setSrc(widget.getSrc());
             thisWidget.setListType(widget.getListType());
             thisWidget.setListItems(widget.getListItems());
             thisWidget.setLesson(widget.getLesson());
