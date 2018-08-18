@@ -79,7 +79,7 @@ public class WidgetService {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/api/lesson/{lessonId}")
+    @PostMapping("/api/lesson/{lessonId}/widgets")
     public void saveWidgets(@PathVariable("lessonId") int lessonId,
                             @RequestBody List<Widget> widgets) {
         Optional<Lesson> thisLesson = lessonRepository.findById(lessonId);
