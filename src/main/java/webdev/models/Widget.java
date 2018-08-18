@@ -16,7 +16,7 @@ public class Widget {
     private String title;
     private String type;
     private String text;
-    private String size;
+    private int size;
     private String href;
     private String src;
     private String listItems;
@@ -59,11 +59,11 @@ public class Widget {
         this.text = text;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
